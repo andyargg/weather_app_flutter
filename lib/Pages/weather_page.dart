@@ -70,46 +70,87 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
 
- @override
-  Widget build(BuildContext context) {
+@override
+Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: _weather == null
-            ? CircularProgressIndicator()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    _weather!.cityName,
-                    style: TextStyle(
-                      fontSize: 28, 
-                      fontWeight: FontWeight.w300,
-                      color: Colors.grey[800],
+      backgroundColor: Colors.grey[100], 
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0, 
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          'Weather',
+          style: TextStyle(
+            color: Colors.blueGrey[800],
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.lightBlue[100]!, 
+              Colors.white
+            ],
+          ),
+        ),
+        child: Center(
+          child: _weather == null
+              ? CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // City Name
+                    Text(
+                      _weather!.cityName,
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blueGrey[800],
+                      ),
                     ),
-                  ),
-                  Lottie.asset(
-                    getWeatherAnimation(_weather!.mainCondition),
-                    width: 180,
-                    height: 180,
-                  ),
-                  Text(
-                    '${_weather!.temp}°C', 
-                    style: TextStyle(
-                      fontSize: 56, 
-                      fontWeight: FontWeight.w200,
-                      color: Colors.black54,
+                    const SizedBox(height: 10),
+                    
+                    Lottie.asset(
+                      getWeatherAnimation(_weather!.mainCondition),
+                      width: 150,
+                      height: 150,
                     ),
-                  ),
-                  Text(
-                    _weather!.mainCondition,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey[600],
+                    
+                    const SizedBox(height: 20),
+                    
+                    Text(
+                      '${_weather!.temp}°C',
+                      style: TextStyle(
+                        fontSize: 64,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.blueGrey[900],
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                    
+                    const SizedBox(height: 10),
+                    
+                    // Main Condition
+                    Text(
+                      _weather!.mainCondition,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.blueGrey[600],
+                      ),
+                    ),
+                    
+                    const SizedBox(height: 30),
+                  ],
+                ),
+        ),
       ),
     );
   }
