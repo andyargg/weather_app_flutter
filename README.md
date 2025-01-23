@@ -1,4 +1,4 @@
-# DOCUMENTATION
+
 
 
 
@@ -11,3 +11,8 @@ The app follows a modular architecture, dividing responsibilities into Models fo
 
 
 ![image](https://github.com/user-attachments/assets/9680e0bc-2f7a-4468-843d-1d7376e5d13f)
+
+
+
+
+>>>>>>> 2460b66eb9a23448c83e9dd2ff429ccdd47832a8
