@@ -43,7 +43,7 @@ class WeatherService {
   }
 
   Future<Map<String, dynamic>> getWeather(double lat, double lon) async {
-    const apiKey = 'a17f2378b387e9db60273a2d194f8f1f';
+    final apiKey = dotenv.env['OPEN_WEATHER_API_KEY'];
     final url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&units=metric');
 
@@ -55,12 +55,12 @@ class WeatherService {
         return json.decode(response.body);
       } else {
         return {
-        "mensaje": "Error: Status code ${response.statusCode}"
+        "mensaje": "error: status code ${response.statusCode}"
       };
       }
     } catch (e) {
         return {
-          "mensaje": "Error en la solicitud: $e"
+          "mensaje": "error en la solicitud: $e"
       };
     }
   }
