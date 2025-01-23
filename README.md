@@ -15,4 +15,4 @@ The app follows a modular architecture, dividing responsibilities into Models fo
 
 
 
->>>>>>> 2460b66eb9a23448c83e9dd2ff429ccdd47832a8
+
